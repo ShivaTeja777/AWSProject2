@@ -4,8 +4,6 @@ from flask import Flask, render_template, g, request,redirect, url_for
 import os
 
 
-#DATABASE = os.path.join(PROJECT_ROOT, 'flaskapp', 'tmpdb1.db')
-
 DATABASE = '/var/www/html/flaskapp/users.db'
 UPLOAD_FOLDER = 'uploads'
 app = Flask(__name__)
@@ -50,7 +48,7 @@ def submit():
     last_name = request.form['last_name']
     email = request.form['email']
 
-    # Store the information in the database
+    # Storing the information in the database
     CREATE_TABLE =  '''
                         CREATE TABLE IF NOT EXISTS users (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -89,11 +87,11 @@ def submit():
     res = execute_query(INSERT_INTO_TABLE, (username, password, first_name, last_name, email))
     print("res from db insert", res)
     commit()
-    # Redirecting to a page displaying all details
+    
     return redirect(url_for('display_details', username=username, password=password, wc=wc))
 @app.route('/display_details')
 def display_details():
-    # Retrieving  information from the database based on the provided username and password
+    
     username = request.args.get('username')
     password = request.args.get('password')
     wc = request.args.get('wc')
