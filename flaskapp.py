@@ -77,7 +77,7 @@ def submit():
 
     print("res from user exists", user_exists)
     if user_exists:
-        return redirect(url_for('display_details', username=username, password=password, wc=wc))
+        return redirect(url_for('display_info', username=username, password=password, wc=wc))
 
 
     res = execute_query(CREATE_TABLE)
@@ -88,9 +88,9 @@ def submit():
     print("res from db insert", res)
     commit()
     
-    return redirect(url_for('display_details', username=username, password=password, wc=wc))
-@app.route('/display_details')
-def display_details():
+    return redirect(url_for('display_info', username=username, password=password, wc=wc))
+@app.route('/display_info')
+def display_info():
     
     username = request.args.get('username')
     password = request.args.get('password')
@@ -104,7 +104,7 @@ def display_details():
     commit()
 
     print("res from db fetch user_inf", user_inf)
-    return render_template('display_details.html', user_info=user_inf, wc=wc)
+    return render_template('display_info.html', user_info=user_inf, wc=wc)
 
 
 def cntWords(nfile):
