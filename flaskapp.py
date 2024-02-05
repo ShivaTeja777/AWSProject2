@@ -1,4 +1,4 @@
-=# importing modules
+# importing modules
 import sqlite3
 from flask import Flask, render_template, g, request, redirect, url_for
 import os
