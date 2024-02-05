@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+</head>
+<body>
+    <h2>User Details</h2>
+
+    {% if user_info %}
+        {% for user in user_info %}
+            <p>Username: {{ user[1] }}</p>
+            <p>Password: {{ user[2] }}</p>
+            <p>First Name: {{ user[3] }}</p>
+            <p>Last Name: {{ user[4] }}</p>
+            <p>Email: {{ user[5] }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No information found for the provided username and password.</p>
+    {% endif %}
+
+    {% if wc  %}
+        <p>Word Count in the uploaded file: {{ wc }}</p>
+    {% endif %}
+
+</body>
+</html>
+(venv) ubuntu@ip-172-31-29-40:~/flaskapp/templates$ ^C
+(venv) ubuntu@ip-172-31-29-40:~/flaskapp/templates$ ls
+display_details.html  index.html  mainpage.html
+(venv) ubuntu@ip-172-31-29-40:~/flaskapp/templates$ cat index.html
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Flask Form</title>
+        </head>
+        <body>
+                <form action="{{ url_for('process') }}" method="post">
+                        <label for="myTextBox">Enter text:</label>
+                        <input type="text" id="myTextBox" name="myTextBox">
+                        <input type="submit" value="Submit">
+                </form>
+        </body>
+</html>
