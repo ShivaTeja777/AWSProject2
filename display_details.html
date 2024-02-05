@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +22,8 @@
     {% if wc  %}
         <p>Word Count in the uploaded file: {{ wc }}</p>
     {% endif %}
+
+    <a href="{{ url_for('download_file', username=user_info[0][1]) }}" download>Download</a>
 
 </body>
 </html>
